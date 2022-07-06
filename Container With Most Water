@@ -1,0 +1,19 @@
+class Solution {
+    public int maxArea(int[] height) {
+        int left = 0;
+        int right = height.length - 1;
+        int max = 0;
+        for(int i = 0; i<height.length; i++){
+            int diff = right - left;
+            int cur_max = Math.min(height[left], height[right])*diff;
+            max = Math.max(max, cur_max);
+            if(height[left] < height[right]){
+                left++;
+            }
+            else{
+                right--;
+            }
+        }
+        return max;
+    }
+}
